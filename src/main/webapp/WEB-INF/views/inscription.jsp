@@ -2,17 +2,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>UPPT | Connexion</title>
+<title>Page d'inscription</title>
 </head>
 <body>
-	<div align="center">
-		<h2>Connexion</h2>
-		<p></p>
+	<div>
+		<h2>Inscription</h2>
 		<p>
-			<%@ include file="loginForm.jsp"%>
+			Bienvenue sur Un Prof Pour Tous.</br> Veuillez remplir le formulaire
+			ci-dessous pour vous inscire : </br>
 		</p>
-		<p>
-			
-		</p>
+
+		<%@ include file="inscriptionForm.jsp"%>
+	</div>
 </body>
 </html>

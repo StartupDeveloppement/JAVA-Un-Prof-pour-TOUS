@@ -2,17 +2,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>UPPT | Connexion</title>
+<title>UPPT | Profile</title>
 </head>
 <body>
-	<div align="center">
-		<h2>Connexion</h2>
-		<p></p>
-		<p>
-			<%@ include file="loginForm.jsp"%>
-		</p>
-		<p>
-			
-		</p>
+	<c:if test="${!empty loginStatus.firstName}">
+		<h2>
+			<c:out value="Bonjour ${loginStatus}"></c:out>
+		</h2>
+	</c:if>
 </body>
 </html>
