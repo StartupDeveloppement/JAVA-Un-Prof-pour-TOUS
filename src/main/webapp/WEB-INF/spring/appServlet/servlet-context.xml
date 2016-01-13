@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/security 
 		http://www.springframework.org/schema/security/spring-security-4.1.xsd
@@ -50,6 +51,7 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				<beans:value>com.ingesup.labojava.bean.Professor</beans:value>
+				<beans:value>com.ingesup.labojava.bean.Student</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -61,7 +63,14 @@
 		</beans:property>
 	</beans:bean>
 
+	<!--  Beans -->
+
 	<beans:bean id="professorDAO" class="com.ingesup.labojava.dao.ProfessorDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	
+	<beans:bean id="studentDAO" class="com.ingesup.labojava.dao.StudentDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
@@ -70,7 +79,11 @@
 		class="com.ingesup.labojava.service.ProfessorServiceImpl">
 		<beans:property name="professorDAO" ref="professorDAO"></beans:property>
 	</beans:bean>
-
+	
+	<beans:bean id="studentService"
+		class="com.ingesup.labojava.service.StudentServiceImpl">
+		<beans:property name="studentDAO" ref="studentDAO"></beans:property>
+	</beans:bean>
 
 	<context:component-scan base-package="com.ingesup.labojava.controller" />
 
@@ -81,5 +94,11 @@
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
+	
+	
+	<!-- Spring resources mapping -->
+	
+	<mvc:resources mapping="/resources/**" location="/resources/theme-default/"  
+	cache-period="31556926"/>
 
 </beans:beans>
